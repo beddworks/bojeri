@@ -10,7 +10,7 @@ const HERO_VARIANTS = {
     hero1: {
         section: 'bg-white py-20',
         container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
-         title: 'text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight',
+        title: 'text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight',
         subtitle: 'text-xl text-slate-700 mb-8 leading-relaxed',
         buttons: 'flex flex-col sm:flex-row gap-4',
         primaryBtn: 'text-white px-8 py-3 rounded-lg text-lg font-medium flex items-center transition-all duration-300 shadow-lg hover:shadow-xl',
@@ -59,7 +59,7 @@ export default function Hero({ settings }: HeroProps) {
     const variant = sectionData.variant || 'hero1';
     const config = HERO_VARIANTS[variant as keyof typeof HERO_VARIANTS] || HERO_VARIANTS.hero1;
 
-    const title = sectionData.title || 'Transform Your Business with WorkDo Dash';
+    const title = sectionData.title || 'Transform Your Business with BOJERI';
     const subtitle = sectionData.subtitle || 'The complete all-in-one business management solution that combines Project Management, Accounting, HRM, CRM, POS, and Product Management into a single powerful platform. Streamline operations, boost productivity, and grow your business with our integrated suite of tools.';
     const primaryButtonText = sectionData.primary_button_text || 'Start Free Trial';
     const primaryButtonLink = sectionData.primary_button_link || route('register');

@@ -64,10 +64,10 @@ export default function Benefits({ data, getSectionData, updateSectionData, upda
                         <Input
                             value={getSectionData('benefits').title || ''}
                             onChange={(e) => updateSectionData('benefits', { title: e.target.value })}
-                            placeholder={t('Why Choose WorkDo Dash?')}
+                            placeholder={t('Why Choose BOJERI?')}
                         />
                     </div>
-                    
+
                     <div className="space-y-4">
                         <Label>{t('Benefits List')}</Label>
                         <Repeater

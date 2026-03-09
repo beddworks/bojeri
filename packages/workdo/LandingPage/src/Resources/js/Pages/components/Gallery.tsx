@@ -50,7 +50,7 @@ export default function Gallery({ settings }: GalleryProps) {
     const variant = sectionData.variant || 'gallery1';
     const config = GALLERY_VARIANTS[variant as keyof typeof GALLERY_VARIANTS] || GALLERY_VARIANTS.gallery1;
 
-    const title = sectionData.title || 'See WorkDo Dash in Action';
+    const title = sectionData.title || 'See BOJERI in Action';
     const subtitle = sectionData.subtitle || 'Explore our intuitive interface and powerful features through real screenshots of our platform';
     const colors = settings?.config_sections?.colors || { primary: '#10b981', secondary: '#059669', accent: '#f59e0b' };
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -108,11 +108,10 @@ export default function Gallery({ settings }: GalleryProps) {
                     <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                            index === currentImageIndex
+                        className={`w-4 h-4 rounded-full transition-all duration-300 ${index === currentImageIndex
                                 ? 'scale-125'
                                 : 'bg-gray-300 hover:bg-gray-500 hover:scale-110'
-                        }`}
+                            }`}
                         style={index === currentImageIndex ? { backgroundColor: colors.primary } : {}}
                     />
                 ))}
@@ -139,9 +138,8 @@ export default function Gallery({ settings }: GalleryProps) {
         <div className="relative max-w-4xl mx-auto">
             <div className="space-y-8">
                 {galleryImages.map((image, index) => (
-                    <div key={index} className={`relative group ${
-                        index % 2 === 0 ? 'ml-0 mr-16' : 'ml-16 mr-0'
-                    }`}>
+                    <div key={index} className={`relative group ${index % 2 === 0 ? 'ml-0 mr-16' : 'ml-16 mr-0'
+                        }`}>
                         <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
                             <img
                                 src={image?.startsWith('http') ? image : getImagePath(image || '')}
@@ -153,9 +151,8 @@ export default function Gallery({ settings }: GalleryProps) {
                                 <div className="text-lg font-semibold">{t('Image')} {index + 1}</div>
                             </div>
                         </div>
-                        <div className={`absolute top-4 w-24 h-24 rounded-full border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 ${
-                            index % 2 === 0 ? '-right-12' : '-left-12'
-                        }`} style={{ backgroundColor: colors.primary }}>
+                        <div className={`absolute top-4 w-24 h-24 rounded-full border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 ${index % 2 === 0 ? '-right-12' : '-left-12'
+                            }`} style={{ backgroundColor: colors.primary }}>
                             <div className="flex items-center justify-center h-full text-white font-bold text-lg">
                                 {index + 1}
                             </div>
@@ -307,11 +304,10 @@ export default function Gallery({ settings }: GalleryProps) {
                                                 e.stopPropagation();
                                                 setCurrentImageIndex(actualIndex);
                                             }}
-                                            className={`w-12 h-12 rounded-lg overflow-hidden transition-all duration-200 ${
-                                                actualIndex === currentImageIndex
+                                            className={`w-12 h-12 rounded-lg overflow-hidden transition-all duration-200 ${actualIndex === currentImageIndex
                                                     ? 'ring-2 ring-white scale-110'
                                                     : 'opacity-60 hover:opacity-100 hover:scale-105'
-                                            }`}
+                                                }`}
                                         >
                                             <img
                                                 src={image?.startsWith('http') ? image : getImagePath(image || '')}

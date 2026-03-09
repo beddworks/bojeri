@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'system' => 'WorkDo Dash SaaS',
+    'system' => 'BOJERI SaaS',
     'system_version' => '7.1',
 ];

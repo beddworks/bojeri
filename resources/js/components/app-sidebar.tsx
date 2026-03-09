@@ -22,8 +22,8 @@ import {
   SidebarMenuItem,
   SidebarInput,
 } from "@/components/ui/sidebar"
-import {Link, usePage} from "@inertiajs/react";
-import {PageProps} from "@/types";
+import { Link, usePage } from "@inertiajs/react";
+import { PageProps } from "@/types";
 import { allMenuItems } from "@/utils/menu";
 import { useTranslation } from 'react-i18next';
 import { useBrand } from "@/contexts/brand-context";
@@ -31,36 +31,36 @@ import { useBrand } from "@/contexts/brand-context";
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { auth } = usePage<PageProps>().props;
-    const { t } = useTranslation();
-    const { settings, getCompleteSidebarProps, getLogoSrc } = useBrand();
-    const [searchQuery, setSearchQuery] = React.useState("");
-    const scrollRef = React.useRef<HTMLDivElement>(null);
+  const { auth } = usePage<PageProps>().props;
+  const { t } = useTranslation();
+  const { settings, getCompleteSidebarProps, getLogoSrc } = useBrand();
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const scrollRef = React.useRef<HTMLDivElement>(null);
 
-    // Preserve scroll position on navigation
-    React.useEffect(() => {
-        const savedScroll = sessionStorage.getItem('sidebar-scroll');
-        if (savedScroll && scrollRef.current) {
-            scrollRef.current.scrollTop = parseInt(savedScroll);
-        }
-    }, []);
+  // Preserve scroll position on navigation
+  React.useEffect(() => {
+    const savedScroll = sessionStorage.getItem('sidebar-scroll');
+    if (savedScroll && scrollRef.current) {
+      scrollRef.current.scrollTop = parseInt(savedScroll);
+    }
+  }, []);
 
-    const handleScroll = () => {
-        if (scrollRef.current) {
-            sessionStorage.setItem('sidebar-scroll', scrollRef.current.scrollTop.toString());
-        }
-    };
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      sessionStorage.setItem('sidebar-scroll', scrollRef.current.scrollTop.toString());
+    }
+  };
 
-    const sidebarProps = getCompleteSidebarProps();
+  const sidebarProps = getCompleteSidebarProps();
 
-    return (
+  return (
     <Sidebar
-        variant={settings.sidebarVariant as any}
-        side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
-        collapsible="icon"
-        className={sidebarProps.className}
-        style={sidebarProps.style}
-        {...props}
+      variant={settings.sidebarVariant as any}
+      side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
+      collapsible="icon"
+      className={sidebarProps.className}
+      style={sidebarProps.style}
+      {...props}
     >
       <SidebarHeader>
         <SidebarMenu>
@@ -81,7 +81,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       />
                     ) : (
                       <div className="text-inherit font-semibold flex items-center text-lg tracking-tight">
-                        {settings.titleText || 'WorkDo'}
+                        {settings.titleText || 'BOJERI'}
                       </div>
                     );
                   })()}

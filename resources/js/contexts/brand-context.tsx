@@ -33,18 +33,18 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   const isSuperAdmin = auth?.user?.roles?.includes('superadmin');
 
   let globalSettings;
-  if(isSuperAdmin != undefined) {
-        globalSettings = isSuperAdmin ? adminAllSetting : companyAllSetting;
-    } else {
-        globalSettings = adminAllSetting ;
-    }
+  if (isSuperAdmin != undefined) {
+    globalSettings = isSuperAdmin ? adminAllSetting : companyAllSetting;
+  } else {
+    globalSettings = adminAllSetting;
+  }
 
   const settings: BrandSettings = {
     logo_dark: globalSettings?.logo_dark || '',
     logo_light: globalSettings?.logo_light || '',
     favicon: globalSettings?.favicon || '',
-    titleText: globalSettings?.titleText || 'WorkDo',
-    footerText: globalSettings?.footerText || '© WorkDo. All rights reserved.',
+    titleText: globalSettings?.titleText || 'BOJERI',
+    footerText: globalSettings?.footerText || '© BOJERI. All rights reserved.',
     sidebarVariant: globalSettings?.sidebarVariant || 'inset',
     sidebarStyle: globalSettings?.sidebarStyle || 'plain',
     layoutDirection: globalSettings?.layoutDirection || 'ltr',

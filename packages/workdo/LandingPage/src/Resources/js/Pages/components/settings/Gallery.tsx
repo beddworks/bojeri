@@ -64,7 +64,7 @@ export default function Gallery({ data, getSectionData, updateSectionData, updat
                         <Input
                             value={getSectionData('gallery').title || ''}
                             onChange={(e) => updateSectionData('gallery', { title: e.target.value })}
-                            placeholder={t('See WorkDo Dash in Action')}
+                            placeholder={t('See BOJERI in Action')}
                         />
                     </div>
                     <div className="space-y-2">
@@ -75,7 +75,7 @@ export default function Gallery({ data, getSectionData, updateSectionData, updat
                             placeholder={t('Explore our intuitive interface and powerful features through real screenshots of our platform')}
                         />
                     </div>
-                    
+
                     <div className="space-y-4">
                         <Label>{t('Gallery Images')}</Label>
                         <Repeater

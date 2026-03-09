@@ -237,7 +237,7 @@ class EmailTemplatesSeeder extends Seeder
                 $emailtemplate=  EmailTemplate::create(
                     [
                     'name' => $eTemp,
-                    'from' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'WorkDo Dash',
+                    'from' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'BOJERI',
                     'module_name' => 'Lead',
                     'created_by' => $admin->id,
                     'creator_id' => $admin->id,

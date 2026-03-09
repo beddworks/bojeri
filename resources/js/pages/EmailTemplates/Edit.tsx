@@ -61,7 +61,7 @@ export default function Edit() {
     useFlashMessages();
 
     const templateForm = useForm({
-        from: emailTemplate.from || 'WorkDo Dash',
+        from: emailTemplate.from || 'BOJERI',
     });
 
     const contentForm = useForm({
@@ -91,13 +91,13 @@ export default function Edit() {
     return (
 
         <AuthenticatedLayout
-                    breadcrumbs={[
-                        {label: t('Email Templates'), url: route('email-templates.index')},
-                        {label: t('Edit Email Template')}
-                    ]}
-                    pageTitle={`${t('Edit Email Template')} : ${emailTemplate.name}`}
+            breadcrumbs={[
+                { label: t('Email Templates'), url: route('email-templates.index') },
+                { label: t('Edit Email Template') }
+            ]}
+            pageTitle={`${t('Edit Email Template')} : ${emailTemplate.name}`}
 
-                >
+        >
 
             <Head title={t('Edit Email Template')} />
 
@@ -204,7 +204,7 @@ export default function Edit() {
                                 </div>
                                 <div className="flex justify-end">
                                     <Button type="submit" disabled={contentForm.processing} className="min-w-24">
-                                         <Save className="h-4 w-4 mr-2" />
+                                        <Save className="h-4 w-4 mr-2" />
                                         {contentForm.processing ? t('Saving...') : t('Save Changes')}
                                     </Button>
                                 </div>

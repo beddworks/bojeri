@@ -74,7 +74,7 @@ export default function Footer({ settings }: FooterProps) {
     const variant = sectionData.variant || 'footer1';
     const config = FOOTER_VARIANTS[variant as keyof typeof FOOTER_VARIANTS] || FOOTER_VARIANTS.footer1;
 
-    const companyName = settings?.company_name || 'WorkDo Dash';
+    const companyName = settings?.company_name || 'BOJERI';
     const description = sectionData.description || 'The complete business management solution for modern enterprises.';
     const contactEmail = settings?.contact_email || 'support@workdodash.com';
     const phone = settings?.contact_phone || '+1 (555) 123-4567';
@@ -367,20 +367,18 @@ export default function Footer({ settings }: FooterProps) {
                             value={emailInput}
                             onChange={(e) => setEmailInput(e.target.value)}
                             disabled={isSubmitting}
-                            className={`flex-1 px-4 py-3 rounded-l-lg text-sm focus:outline-none transition-all duration-300 disabled:opacity-50 ${
-                                config.layout === 'split'
+                            className={`flex-1 px-4 py-3 rounded-l-lg text-sm focus:outline-none transition-all duration-300 disabled:opacity-50 ${config.layout === 'split'
                                     ? 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500'
                                     : config.layout === 'modern'
                                         ? 'bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:border-white focus:bg-white/30'
                                         : 'bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:border-blue-500'
-                            }`}
+                                }`}
                         />
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className={`text-white px-6 py-3 rounded-r-lg font-semibold transition-all duration-300 disabled:opacity-50 ${
-                                config.layout === 'modern' ? 'hover:scale-105 hover:shadow-xl transform' : ''
-                            }`}
+                            className={`text-white px-6 py-3 rounded-r-lg font-semibold transition-all duration-300 disabled:opacity-50 ${config.layout === 'modern' ? 'hover:scale-105 hover:shadow-xl transform' : ''
+                                }`}
                             style={{ backgroundColor: colors.primary }}
                             onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = colors.secondary)}
                             onMouseLeave={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = colors.primary)}

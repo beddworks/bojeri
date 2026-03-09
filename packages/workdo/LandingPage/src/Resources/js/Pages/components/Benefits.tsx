@@ -42,12 +42,12 @@ export default function Benefits({ settings }: BenefitsProps) {
     const sectionData = settings?.config_sections?.sections?.benefits || {};
     const variant = sectionData.variant || 'benefits1';
     const config = BENEFITS_VARIANTS[variant as keyof typeof BENEFITS_VARIANTS] || BENEFITS_VARIANTS.benefits1;
-    
-    const title = sectionData.title || 'Why Choose WorkDo Dash?';
+
+    const title = sectionData.title || 'Why Choose BOJERI?';
     const colors = settings?.config_sections?.colors || { primary: '#10b981', secondary: '#059669', accent: '#f59e0b' };
     const [openAccordion, setOpenAccordion] = useState(0);
     const [activeTab, setActiveTab] = useState(0);
-    
+
     const defaultBenefits = [
         { title: 'Complete Project Management', description: 'Organize and track all your projects in one place with powerful task management, team collaboration, and progress tracking tools.' },
         { title: 'Integrated Financial System', description: 'Manage your finances seamlessly with comprehensive accounting, invoicing, expense tracking, and real-time financial reporting.' },
@@ -56,7 +56,7 @@ export default function Benefits({ settings }: BenefitsProps) {
         { title: 'Modern POS Solution', description: 'Process sales quickly with our intuitive point-of-sale system featuring inventory management and multiple payment options.' },
         { title: 'Scalable & Secure', description: 'Enterprise-grade security with cloud-based infrastructure that grows with your business needs and ensures data protection.' }
     ];
-    
+
     const benefits = sectionData.benefits?.length > 0 ? sectionData.benefits : defaultBenefits;
 
     const renderAccordion = () => (
@@ -136,11 +136,10 @@ export default function Benefits({ settings }: BenefitsProps) {
                     <button
                         key={index}
                         onClick={() => setActiveTab(index)}
-                        className={`px-6 py-3 font-medium text-sm border-b-2 transition-colors ${
-                            activeTab === index
+                        className={`px-6 py-3 font-medium text-sm border-b-2 transition-colors ${activeTab === index
                                 ? 'text-white rounded-t-lg'
                                 : 'border-transparent text-gray-500 hover:text-gray-700'
-                        }`}
+                            }`}
                         style={activeTab === index ? { backgroundColor: colors.primary, borderColor: colors.primary } : {}}
                     >
                         {benefit.title}

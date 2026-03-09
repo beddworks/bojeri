@@ -62,7 +62,7 @@ export default function Header({ settings }: HeaderProps) {
     const variant = sectionData.variant || 'header1';
     const config = HEADER_VARIANTS[variant as keyof typeof HEADER_VARIANTS] || HEADER_VARIANTS.header1;
 
-    const companyName = sectionData.company_name || settings?.company_name || 'WorkDo Dash';
+    const companyName = sectionData.company_name || settings?.company_name || 'BOJERI';
     const isAuthenticated = settings?.is_authenticated;
     const ctaText = isAuthenticated ? 'Dashboard' : (sectionData.cta_text || 'Get Started');
     const colors = settings?.config_sections?.colors || { primary: '#10b981', secondary: '#059669', accent: '#f59e0b' };
@@ -131,10 +131,9 @@ export default function Header({ settings }: HeaderProps) {
             return (
                 <button
                     onClick={() => router.visit(route('dashboard'))}
-                    className={`text-white rounded-md font-medium transition-colors ${
-                        isMobile ? 'px-4 py-2 text-sm w-full' :
-                        variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
-                    }`}
+                    className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
+                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                        }`}
                     style={{ backgroundColor: colors.primary }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = colors.primary}
@@ -149,10 +148,9 @@ export default function Header({ settings }: HeaderProps) {
                 <div className={`flex ${isMobile ? 'flex-col space-y-2' : 'space-x-2'}`}>
                     <button
                         onClick={() => router.visit(route('login'))}
-                        className={`border rounded-md font-medium transition-colors ${
-                            isMobile ? 'px-4 py-2 text-sm w-full' :
-                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
-                        }`}
+                        className={`border rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
+                                variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                            }`}
                         style={{ borderColor: colors.primary, color: colors.primary }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = colors.primary;
@@ -167,10 +165,9 @@ export default function Header({ settings }: HeaderProps) {
                     </button>
                     <button
                         onClick={() => router.visit(route('register'))}
-                        className={`text-white rounded-md font-medium transition-colors ${
-                            isMobile ? 'px-4 py-2 text-sm w-full' :
-                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
-                        }`}
+                        className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
+                                variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                            }`}
                         style={{ backgroundColor: colors.primary }}
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = colors.primary}
@@ -184,10 +181,9 @@ export default function Header({ settings }: HeaderProps) {
         return (
             <button
                 onClick={() => router.visit(route('login'))}
-                className={`text-white rounded-md font-medium transition-colors ${
-                    isMobile ? 'px-4 py-2 text-sm w-full' :
-                    variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
-                }`}
+                className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
+                        variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                    }`}
                 style={{ backgroundColor: colors.primary }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = colors.primary}
@@ -230,35 +226,33 @@ export default function Header({ settings }: HeaderProps) {
                     <div className={config.desktop}>
                         {renderNavItems()}
                         {sectionData?.enable_addon_link !== false && (
-                        <Link
-                            href={route("addons.page")}
-                            className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
-                                variant === 'header4' || variant === 'header5'
-                                    ? 'text-white hover:bg-white/10'
-                                    : variant === 'header2'
-                                        ? 'text-slate-700 hover:bg-white hover:shadow-sm'
-                                        : 'text-slate-700 hover:bg-slate-50'
-                            }`}
-                            onMouseEnter={(e) => {
-                                if (variant !== 'header4' && variant !== 'header5') {
-                                    e.currentTarget.style.color = colors.primary;
-                                }
-                            }}
-                            onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                        >
-                            {t('Add-Ons')}
-                        </Link>
-                        )}
-                        {sectionData?.enable_pricing_link !== false && (
                             <Link
-                                href={route("pricing.page")}
-                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${
-                                    variant === 'header4' || variant === 'header5'
+                                href={route("addons.page")}
+                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${variant === 'header4' || variant === 'header5'
                                         ? 'text-white hover:bg-white/10'
                                         : variant === 'header2'
                                             ? 'text-slate-700 hover:bg-white hover:shadow-sm'
                                             : 'text-slate-700 hover:bg-slate-50'
-                                }`}
+                                    }`}
+                                onMouseEnter={(e) => {
+                                    if (variant !== 'header4' && variant !== 'header5') {
+                                        e.currentTarget.style.color = colors.primary;
+                                    }
+                                }}
+                                onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                            >
+                                {t('Add-Ons')}
+                            </Link>
+                        )}
+                        {sectionData?.enable_pricing_link !== false && (
+                            <Link
+                                href={route("pricing.page")}
+                                className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${variant === 'header4' || variant === 'header5'
+                                        ? 'text-white hover:bg-white/10'
+                                        : variant === 'header2'
+                                            ? 'text-slate-700 hover:bg-white hover:shadow-sm'
+                                            : 'text-slate-700 hover:bg-slate-50'
+                                    }`}
                                 onMouseEnter={(e) => {
                                     if (variant !== 'header4' && variant !== 'header5') {
                                         e.currentTarget.style.color = colors.primary;

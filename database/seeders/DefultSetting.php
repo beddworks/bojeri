@@ -29,8 +29,8 @@ class DefultSetting extends Seeder
                 'logo_light' => 'logo_light.png',
                 'logo_dark' => 'logo_dark.png',
                 'favicon' => 'favicon.png',
-                'titleText' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'WorkDo Dash',
-                'footerText' => 'Copyright © ' . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'WorkDo Dash'),
+                'titleText' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'BOJERI',
+                'footerText' => 'Copyright © ' . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'BOJERI'),
                 'sidebarVariant' => 'inset',
                 'sidebarStyle' => 'plain',
                 'layoutDirection' => 'ltr',
@@ -61,7 +61,7 @@ class DefultSetting extends Seeder
 
                 // SEO Settings
                 'metaKeywords' => 'workdo, dashboard, admin, panel, management',
-                'metaTitle' => !empty(env('APP_NAME')) ? env('APP_NAME') . ' - Dashboard' : 'WorkDo Dash - Dashboard',
+                'metaTitle' => !empty(env('APP_NAME')) ? env('APP_NAME') . ' - Dashboard' : 'BOJERI - Dashboard',
                 'metaDescription' => 'Modern dashboard and management system built with Laravel and React',
                 'metaImage' => 'meta_image.png',
 

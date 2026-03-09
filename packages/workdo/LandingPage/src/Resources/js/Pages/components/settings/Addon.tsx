@@ -23,7 +23,7 @@ export default function Addon({ data, getSectionData, updateSectionData, updateS
         // Initialize addon settings with default values if they don't exist
         const defaultSettings = {
             title: 'Premium Addons',
-            subtitle: 'Extend your WorkDo Dash with powerful premium modules designed to enhance your business operations',
+            subtitle: 'Extend your BOJERI with powerful premium modules designed to enhance your business operations',
             per_page: 20,
             default_price_type: 'monthly',
             card_variant: 'card1',
@@ -89,7 +89,7 @@ export default function Addon({ data, getSectionData, updateSectionData, updateS
                             <Label htmlFor="addons-subtitle">{t('Page Subtitle')}</Label>
                             <Textarea
                                 id="addons-subtitle"
-                                value={sectionData.subtitle || 'Extend your WorkDo Dash with powerful premium modules designed to enhance your business operations'}
+                                value={sectionData.subtitle || 'Extend your BOJERI with powerful premium modules designed to enhance your business operations'}
                                 onChange={(e) => updateSectionData('addons', { subtitle: e.target.value })}
                                 placeholder={t('Enter page subtitle')}
                                 rows={3}
