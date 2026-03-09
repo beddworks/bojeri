@@ -1,0 +1,101 @@
++ Dashboard
+-- Account Dashboard
+-- Project Dashboard
+-- HRM Dashboard
+-- POS Dashboard
+-- CRM Dashboard
+
++ User Management
+-- Roles
+-- Users
+
++ Proposal
+
++ Sales Invoice
+-- Sales Invoice
+-- Sales Invoice Returns
+
++ Purchase
+-- Purchase Invoice
+-- Purchase Returns
+-- Warehouses
+-- Transfers
+
++ Product & Service
+-- Items
+-- System Setup
+
++ Project
+-- Projects
+-- Projects Report
+-- System Setup
+
++ Accounting
+-- Customers
+-- Vendors
+-- Banking
+---- Bank Accounts
+---- Bank Transactions
+---- Bank Transfers
+-- Chart Of Accounts
+-- Vendor Payments
+-- Customer Payments
+-- Revenue
+-- Expense
+-- Debit Notes
+-- Credit Notes
+-- Reports
+-- System Setup
+
++ HRM
+-- Employees
+-- Payslip
+-- Set Salary
+-- Payroll
+-- Attedance
+-- Shifts
+-- Attendances
+-- Leave Management
+---- Leave Types
+---- Leave Applications
+---- Leave Balance
+---- Holidays
+-- Awards
+-- Promotions
+-- Resignations
+-- Terminations
+-- Warnings
+-- Complaints
+-- Transfers
+-- Documents
+-- Acknowledgments
+-- Announcements
+-- Events
+-- System Setup
+
++ POS
+-- Add POS
+-- POS Orders
+-- Print Barcode
+-- Reports
+
++ CRM
+-- Leads
+-- Deals
+-- System Setup
+-- Reports
+---- Lead Reports
+---- Deal Reports
+
++ Media Library
+
++ Messenger
+
++ Helpdesk
+
++ Plan
+-- Setup Subscription Plan
+-- Bank Transfer Requests
+-- Orders
+
++ Settings
