@@ -34,6 +34,7 @@ use App\Http\Controllers\MetaController;
 use Inertia\Inertia;
 
 
+Route::get('/', fn () =>  redirect()->route('login') );
 Route::middleware(['auth', 'verified', 'PlanModuleCheck'])->group(function () {
     // Route::get('/dashboard', function () {
     //     return Inertia::render('dashboard');
