@@ -21,9 +21,13 @@ export default function Login({
     enableRegistration?: boolean;
 }) {
     const { t } = useTranslation();
+    const demoUser = window.location.search;
+    const demoParams = new URLSearchParams(demoUser);
+    const demoEmail = demoParams.get("email")
+    const demoPassword = demoParams.get("password")
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: "",
-        password: "",
+        email: demoEmail ?? "",
+        password: demoPassword ?? "",
         remember: false,
         recaptcha_token: null,
     });
