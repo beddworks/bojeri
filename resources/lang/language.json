@@ -94,5 +94,10 @@
         "name": "中文",
         "countryCode": "CN",
         "enabled": true
+    },
+    {
+        "code": "id",
+        "name": "Indonesia",
+        "countryCode": "ID"
     }
 ]
