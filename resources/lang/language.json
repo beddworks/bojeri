@@ -6,6 +6,12 @@
         "enabled": true
     },
     {
+        "code": "id",
+        "name": "Indonesia",
+        "countryCode": "ID",
+        "enabled": true
+    },
+    {
         "code": "es",
         "name": "Español",
         "countryCode": "ES",
@@ -94,10 +100,5 @@
         "name": "中文",
         "countryCode": "CN",
         "enabled": true
-    },
-    {
-        "code": "id",
-        "name": "Indonesia",
-        "countryCode": "ID"
     }
 ]
