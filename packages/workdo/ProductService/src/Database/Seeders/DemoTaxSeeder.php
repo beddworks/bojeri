@@ -10,20 +10,16 @@ class DemoTaxSeeder extends Seeder
     public function run($userId): void
     {
         if (!empty($userId)) {
+            // PT Bojeri — Indonesian VAT (PPN)
             $taxes = [
-                ['tax_name' => 'GST', 'rate' => 18.00],
-                ['tax_name' => 'VAT', 'rate' => 12.00],
-                ['tax_name' => 'Service Tax', 'rate' => 15.00],
-                ['tax_name' => 'Sales Tax', 'rate' => 8.50],
+                ['tax_name' => 'PPN', 'rate' => 11.00],
             ];
 
             foreach ($taxes as $tax) {
-                ProductServiceTax::create([
-                    'tax_name' => $tax['tax_name'],
-                    'rate' => $tax['rate'],
-                    'creator_id' => $userId,
-                    'created_by' => $userId,
-                ]);
+                ProductServiceTax::updateOrCreate(
+                    ['tax_name' => $tax['tax_name'], 'created_by' => $userId],
+                    ['rate' => $tax['rate'], 'creator_id' => $userId]
+                );
             }
         }
     }

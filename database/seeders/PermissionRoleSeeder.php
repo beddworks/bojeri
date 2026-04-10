@@ -36,7 +36,7 @@ class PermissionRoleSeeder extends Seeder
 
         // Create Company User
         $company = User::firstOrCreate(
-            ['email' => 'company@example.com'],
+            ['email' => 'demo@bojeri.com'],
             [
                 'name' => 'Company',
                 'email_verified_at' => now(),

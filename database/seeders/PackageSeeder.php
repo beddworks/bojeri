@@ -18,7 +18,7 @@ class PackageSeeder extends Seeder
     public function run($userId = null): void
     {
         if(empty($userId)){
-          $userId = User::where('email', 'company@example.com')->first()->id;
+          $userId = User::where('email', 'demo@bojeri.com')->first()->id;
         }
         $path = base_path('packages/workdo');
         $devPackagePath = \Illuminate\Support\Facades\File::directories($path);
@@ -66,7 +66,7 @@ class PackageSeeder extends Seeder
 
         // static assignPlan
         $plan = Plan::where('custom_plan', true)->first();
-        $user = User::where('email', 'company@example.com')->first();
+        $user = User::where('email', 'demo@bojeri.com')->first();
         $user->active_plan = $plan->id;
         $user->plan_expire_date = date('Y-m-d', strtotime('+10 month'));
         $user->total_user = -1;

@@ -25,52 +25,34 @@ class DemoProductServiceItemSeeder extends Seeder
                 return;
             }
 
-            // 35 Items: 15 Products, 4 Services, 6 Parts across all 10 categories
+            // PT Bojeri — furniture products and services (Section 8)
             $categoryItems = [
-                'Electronics & Technology' => [
-                    ['name' => 'Laptop', 'sku' => 'ELEC-PROD-001', 'type' => 'product', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 5, 'description' => 'High performance business laptop with advanced graphics processing power for professionals', 'sale_price' => 899.99, 'purchase_price' => 650.00],
-                    ['name' => 'Smartphone', 'sku' => 'ELEC-PROD-002', 'type' => 'product', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 4, 'description' => 'Latest model smartphone with advanced camera system and high speed processing', 'sale_price' => 699.99, 'purchase_price' => 450.00],
-                    ['name' => 'IT Support Service', 'sku' => 'ELEC-SERV-003', 'type' => 'service', 'unit' => 'Hour', 'has_tax' => true, 'image' => true, 'images' => 0, 'description' => 'Comprehensive technical support and system maintenance service package for business operations', 'sale_price' => 75.00, 'purchase_price' => 0.00],
-                    ['name' => 'Laptop Battery', 'sku' => 'ELEC-PART-004', 'type' => 'part', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'High capacity replacement lithium battery compatible with multiple laptop models', 'sale_price' => 89.99, 'purchase_price' => 45.00],
+                'Living Room' => [
+                    ['name' => 'Sofa Minimalis 3-Seater', 'sku' => 'SF-001', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Sofa 3-seater minimalis berbahan kain premium, cocok untuk ruang tamu modern', 'sale_price' => 4800000, 'purchase_price' => 2800000],
+                    ['name' => 'Sofa L-Shape Modern',     'sku' => 'SF-002', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Sofa L-shape modern dengan rangka kayu jati dan pelapis kain abu premium', 'sale_price' => 7200000, 'purchase_price' => 4200000],
+                    ['name' => 'Rak Buku Rotan',          'sku' => 'RB-009', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Rak buku anyaman rotan natural, ringan dan tahan lama untuk dekorasi ruang tamu', 'sale_price' => 950000,  'purchase_price' => 500000],
+                    ['name' => 'Lemari TV Minimalis',     'sku' => 'LT-010', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Lemari TV minimalis dengan rak serbaguna, finishing HPL warna putih glossy', 'sale_price' => 1800000, 'purchase_price' => 1000000],
                 ],
-                'Fashion & Apparel' => [
-                    ['name' => 'T-Shirt', 'sku' => 'FASH-PROD-005', 'type' => 'product', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 5, 'description' => 'Organic cotton comfortable casual wear t-shirt available in multiple colors', 'sale_price' => 24.99, 'purchase_price' => 12.00],
-                    ['name' => 'Jeans', 'sku' => 'FASH-PROD-006', 'type' => 'product', 'unit' => 'Pair', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Classic fit premium denim jeans with stretch comfort technology for everyday', 'sale_price' => 59.99, 'purchase_price' => 35.00],
-                    ['name' => 'Tailoring Service', 'sku' => 'FASH-SERV-007', 'type' => 'service', 'unit' => 'Service Call', 'has_tax' => true, 'image' => true, 'images' => 0, 'description' => 'Professional clothing alteration and custom tailoring service for perfect fit garments', 'sale_price' => 45.00, 'purchase_price' => 0.00],
-                    ['name' => 'Belt', 'sku' => 'FASH-PART-008', 'type' => 'part', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Leather belt for casual and formal wear', 'sale_price' => 250.00, 'purchase_price' => 120.00],
+                'Dining' => [
+                    ['name' => 'Meja Makan Jati 6 Pax',  'sku' => 'MM-003', 'type' => 'product', 'unit' => 'Set',  'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Meja makan kayu jati solid untuk 6 orang, finishing natural oil berkualitas tinggi', 'sale_price' => 6500000, 'purchase_price' => 3800000],
+                    ['name' => 'Kursi Makan Minimalis',   'sku' => 'KM-004', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Kursi makan minimalis rangka kayu jati, dudukan busa padat bersarung kain premium', 'sale_price' => 850000,  'purchase_price' => 450000],
                 ],
-                'Books & Stationery' => [
-                    ['name' => 'Notebook', 'sku' => 'BOOK-PROD-009', 'type' => 'product', 'unit' => 'Book', 'has_tax' => true, 'image' => true, 'images' => 4, 'description' => 'Premium handcrafted leather bound notebook with high quality lined pages for professionals', 'sale_price' => 34.99, 'purchase_price' => 18.00],
-                    ['name' => 'Ink Cartridge', 'sku' => 'BOOK-PART-011', 'type' => 'part', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 1, 'description' => 'Compatible ink cartridge replacement for various printer models and brands available', 'sale_price' => 25.99, 'purchase_price' => 12.00],
+                'Office' => [
+                    ['name' => 'Kursi Kantor Ergonomis',  'sku' => 'KK-005', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Kursi kantor ergonomis dengan sandaran punggung adjustable dan material mesh bernapas', 'sale_price' => 1750000, 'purchase_price' => 950000],
+                    ['name' => 'Meja Kerja L-Shape',      'sku' => 'MK-006', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Meja kerja L-shape berbahan multiplex HPL dengan laci dan rak kabel tersembunyi', 'sale_price' => 2300000, 'purchase_price' => 1300000],
                 ],
-                'Home & Garden' => [
-                    ['name' => 'Plant Pot', 'sku' => 'HOME-PROD-012', 'type' => 'product', 'unit' => 'Pot', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Decorative ceramic plant pot perfect for indoor plant cultivation with drainage', 'sale_price' => 24.99, 'purchase_price' => 12.00],
-                    ['name' => 'Light Bulb', 'sku' => 'HOME-PART-014', 'type' => 'part', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Standard household light bulb for daily lighting needs', 'sale_price' => 300.00, 'purchase_price' => 250.00],
+                'Bedroom' => [
+                    ['name' => 'Lemari Pakaian 4 Pintu',  'sku' => 'LP-007', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Lemari pakaian 4 pintu slide material multiplex HPL putih dengan cermin terintegrasi', 'sale_price' => 3200000, 'purchase_price' => 1800000],
+                    ['name' => 'Tempat Tidur Minimalis',  'sku' => 'TT-008', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Tempat tidur minimalis Queen 160×200 cm, rangka kayu solid finishing duco putih', 'sale_price' => 5100000, 'purchase_price' => 3000000],
+                    ['name' => 'Meja Rias Jati',          'sku' => 'MR-011', 'type' => 'product', 'unit' => 'Unit', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Meja rias kayu jati dengan cermin oval dan 3 laci penyimpanan, finishing natural oil', 'sale_price' => 2100000, 'purchase_price' => 1200000],
                 ],
-                'Sports & Fitness' => [
-                    ['name' => 'Football', 'sku' => 'SPORT-PROD-015', 'type' => 'product', 'unit' => 'Ball', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Official regulation size football for competitive games and training with leather', 'sale_price' => 39.99, 'purchase_price' => 22.00],
-                    ['name' => 'Yoga Mat', 'sku' => 'SPORT-PART-017', 'type' => 'part', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 1, 'description' => 'Everyday yoga mat for home or gym workouts', 'sale_price' => 150.00, 'purchase_price' => 70.00],
+                'Kitchen' => [
+                    ['name' => 'Kabinet Dapur Set',       'sku' => 'KS-012', 'type' => 'product', 'unit' => 'Set',  'has_tax' => true, 'image' => true, 'images' => 4, 'description' => 'Kitchen set custom ukuran 3 meter, material multiplex HPL motif kayu, termasuk sink hole', 'sale_price' => 8500000, 'purchase_price' => 5000000],
                 ],
-                'Health & Beauty' => [
-                    ['name' => 'Shampoo', 'sku' => 'BEAUTY-PROD-018', 'type' => 'product', 'unit' => 'Bottle', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Natural organic shampoo for all hair types with essential oils and formula', 'sale_price' => 18.99, 'purchase_price' => 9.00],
-                    ['name' => 'Face Cream', 'sku' => 'BEAUTY-PROD-019', 'type' => 'product', 'has_tax' => true, 'image' => true, 'images' => 0, 'description' => 'Anti aging moisturizing face cream with vitamin E and hyaluronic acid', 'sale_price' => 35.99, 'purchase_price' => 18.00],
-                    ['name' => 'Massage Therapy Service', 'sku' => 'BEAUTY-SERV-020', 'type' => 'service', 'unit' => 'Session', 'has_tax' => true, 'image' => true, 'images' => 0, 'description' => 'Professional full-body massage therapy for relaxation and stress relief', 'sale_price' => 120.00, 'purchase_price' => 0.00],
-                ],
-                'Fruits & Vegetables' => [
-                    ['name' => 'Apple', 'sku' => 'FRUIT-PROD-022', 'type' => 'product', 'unit' => 'Kilogram', 'has_tax' => true, 'image' => true, 'images' => 5, 'description' => 'Fresh organic red apples packed with natural vitamins and minerals from orchards', 'sale_price' => 3.99, 'purchase_price' => 2.00],
-                    ['name' => 'Raspberry', 'sku' => 'FRUIT-PROD-023', 'type' => 'product', 'unit' => 'Basket', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Fresh organic raspberries packed with antioxidants and natural sweetness for eating', 'sale_price' => 6.99, 'purchase_price' => 4.00],
-                ],
-                'Food & Beverages' => [
-                    ['name' => 'Coffee', 'sku' => 'FOOD-PROD-026', 'type' => 'product', 'unit' => 'Kilogram', 'has_tax' => true, 'image' => true, 'images' => 4, 'description' => 'Premium arabica coffee beans roasted to perfection with rich aroma and taste', 'sale_price' => 15.99, 'purchase_price' => 8.00],
-                ],
-                'Automotive & Tools' => [
-                    ['name' => 'Car Engine Oil', 'sku' => 'AUTO-PROD-029', 'type' => 'product', 'unit' => 'Bottle', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'High-performance synthetic engine oil designed for modern cars and extended engine life', 'sale_price' => 45.00, 'purchase_price' => 25.00],
-                    ['name' => 'Cordless Drill Machine', 'sku' => 'AUTO-PROD-030', 'type' => 'product', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 2, 'description' => 'Rechargeable cordless drill with variable speed and multiple drill bit attachments', 'sale_price' => 120.00, 'purchase_price' => 70.00],
-                    ['name' => 'Brake Pad Set', 'sku' => 'AUTO-PART-032', 'type' => 'part', 'unit' => 'Set', 'has_tax' => true, 'image' => true, 'images' => 1, 'description' => 'Durable replacement brake pads compatible with most mid-size cars and SUVs', 'sale_price' => 80.00, 'purchase_price' => 40.00],
-                ],
-                'Jewelry & Accessories' => [
-                    ['name' => 'Watch', 'sku' => 'JEWEL-PROD-033', 'type' => 'product', 'unit' => 'Piece', 'has_tax' => true, 'image' => true, 'images' => 3, 'description' => 'Elegant stainless steel watch with water resistance and precision quartz movement', 'sale_price' => 199.99, 'purchase_price' => 120.00],
-                    ['name' => 'Jewelry Repair Service', 'sku' => 'JEWEL-SERV-034', 'type' => 'service', 'has_tax' => true, 'image' => true, 'images' => 0, 'description' => 'Professional jewelry repair and restoration service for watches rings and necklaces', 'sale_price' => 35.00, 'purchase_price' => 0.00],
+                'Service' => [
+                    ['name' => 'Jasa Pasang & Instalasi', 'sku' => 'SVC-01', 'type' => 'service', 'unit' => 'Unit',   'has_tax' => false, 'image' => false, 'images' => 0, 'description' => 'Jasa pemasangan dan instalasi furnitur di lokasi pelanggan oleh tim teknisi berpengalaman', 'sale_price' => 250000, 'purchase_price' => 0],
+                    ['name' => 'Jasa Custom Order',       'sku' => 'SVC-02', 'type' => 'service', 'unit' => 'Proyek', 'has_tax' => false, 'image' => false, 'images' => 0, 'description' => 'Layanan desain dan produksi furnitur custom sesuai spesifikasi dan kebutuhan klien', 'sale_price' => 500000, 'purchase_price' => 0],
+                    ['name' => 'Jasa Pengiriman',         'sku' => 'SVC-03', 'type' => 'service', 'unit' => 'Trip',   'has_tax' => false, 'image' => false, 'images' => 0, 'description' => 'Layanan pengiriman furnitur ke lokasi pelanggan dengan armada kendaraan aman', 'sale_price' => 200000, 'purchase_price' => 0],
                 ],
             ];
 

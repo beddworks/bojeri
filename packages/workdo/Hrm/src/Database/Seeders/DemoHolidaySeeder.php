@@ -11,10 +11,6 @@ class DemoHolidaySeeder extends Seeder
 {
     public function run($userId): void
     {
-        if (Holiday::where('created_by', $userId)->exists()) {
-            return; // Skip seeding if data already exists
-        }
-        
         if (!empty($userId)) {
             $holidayTypes = HolidayType::where('created_by', $userId)->pluck('id')->toArray();
 
@@ -22,70 +18,52 @@ class DemoHolidaySeeder extends Seeder
                 return;
             }
 
+            Holiday::where('created_by', $userId)->delete();
+
             $holidayNames = [
-                'New Year Day - Annual Celebration',
-                'Martin Luther King Jr Day - Civil Rights',
-                'Presidents Day - National Observance',
-                'Good Friday - Religious Holiday',
-                'Easter Monday - Religious Observance',
-                'Memorial Day - National Remembrance',
-                'Independence Day - National Holiday',
-                'Labor Day - Workers Rights',
-                'Columbus Day - Historical Observance',
-                'Veterans Day - Military Appreciation',
-                'Thanksgiving Day - National Gratitude',
-                'Christmas Eve - Religious Preparation',
-                'Christmas Day - Religious Celebration',
-                'New Years Eve - Year End',
-                'Company Foundation Day - Anniversary',
-                'Employee Appreciation Day - Recognition',
-                'Summer Company Retreat - Team Building',
-                'Winter Holiday Break - Seasonal',
-                'Spring Festival - Cultural Celebration',
-                'Autumn Harvest Festival - Seasonal',
-                'International Womens Day - Recognition',
-                'Earth Day - Environmental Awareness',
-                'World Health Day - Wellness Focus',
-                'International Workers Day - Labor Rights',
-                'World Environment Day - Sustainability',
-                'International Peace Day - Global Unity',
-                'World Teachers Day - Education Honor',
-                'International Human Rights Day - Justice',
-                'World AIDS Day - Health Awareness',
-                'International Volunteer Day - Community Service'
+                'Tahun Baru 2025',
+                'Isra Miraj 1446 H',
+                'Tahun Baru Imlek 2576 Kongzili',
+                'Hari Raya Nyepi - Tahun Baru Saka 1947',
+                'Wafat Yesus Kristus',
+                'Hari Buruh Internasional',
+                'Hari Raya Waisak 2569 BE',
+                'Kenaikan Yesus Kristus',
+                'Hari Lahir Pancasila',
+                'Hari Raya Idul Adha 1446 H',
+                'Tahun Baru Islam 1447 H',
+                'Hari Kemerdekaan RI ke-80',
+                'Maulid Nabi Muhammad SAW 1447 H',
+                'Hari Pahlawan',
+                'Hari Raya Natal',
+                'Cuti Bersama Natal',
+                'Tahun Baru 2026',
+                'Hari Raya Idul Fitri 1 Syawal 1447 H',
+                'Cuti Bersama Idul Fitri 1447 H',
+                'Hari Jadi PT Bojeri',
             ];
 
             $descriptions = [
-                'Annual celebration marking the beginning of new calendar year with traditional festivities and resolutions.',
-                'National holiday honoring civil rights leader and his contributions to equality and social justice.',
-                'Federal holiday celebrating the birthdays of George Washington and Abraham Lincoln with patriotic observance.',
-                'Christian holiday commemorating the crucifixion of Jesus Christ observed with religious services and reflection.',
-                'Christian holiday following Easter Sunday celebrating resurrection with family gatherings and traditional meals.',
-                'National holiday honoring military personnel who died in service with memorial ceremonies and parades.',
-                'National independence celebration with fireworks displays patriotic events and community gatherings across the country.',
-                'International holiday celebrating workers rights and labor movement achievements with parades and demonstrations.',
-                'Federal holiday commemorating Christopher Columbus arrival in Americas with historical reflection and cultural events.',
-                'National holiday honoring military veterans for their service with ceremonies parades and community recognition.',
-                'National holiday celebrating gratitude and harvest with family gatherings traditional meals and thanksgiving traditions.',
-                'Religious holiday preparation for Christmas celebration with family time gift wrapping and festive activities.',
-                'Major Christian holiday celebrating birth of Jesus Christ with religious services family gatherings and gift exchange.',
-                'Year end celebration with parties festivities and countdown to midnight marking transition to new year.',
-                'Company milestone celebration commemorating founding date with employee recognition events and organizational history reflection.',
-                'Special day dedicated to recognizing employee contributions achievements and dedication with awards and appreciation events.',
-                'Annual company retreat combining team building activities professional development and recreational activities in summer setting.',
-                'Extended holiday break during winter season allowing employees rest relaxation and family time during cold months.',
-                'Cultural celebration welcoming spring season with outdoor activities community events and renewal themed festivities.',
-                'Seasonal festival celebrating autumn harvest with traditional foods community gatherings and thanksgiving themed activities.',
-                'Global celebration recognizing womens achievements contributions and ongoing fight for gender equality and empowerment.',
-                'Environmental awareness day promoting sustainability conservation and ecological responsibility through educational activities and green initiatives.',
-                'World health organization sponsored day focusing on global health issues wellness promotion and healthcare accessibility.',
-                'International labor day celebrating workers rights achievements and ongoing struggles for fair wages and working conditions.',
-                'United Nations environmental day promoting awareness about environmental protection conservation and sustainable development practices.',
-                'International day promoting peace conflict resolution and global harmony through educational events and community activities.',
-                'Global recognition day honoring teachers educators and their vital role in society through appreciation events and educational focus.',
-                'International observance promoting human rights awareness equality justice and dignity for all people worldwide.',
-                'Global health awareness day focusing on HIV AIDS prevention treatment and support for affected communities.',
-                'International recognition day celebrating volunteers and their contributions to communities through service and charitable activities.'
+                'Libur Tahun Baru Masehi 2025. Seluruh karyawan PT Bojeri mendapat hari libur nasional.',
+                'Libur Isra Miraj 1446 H. Peringatan perjalanan malam Nabi Muhammad SAW dari Mekah ke Madinah.',
+                'Libur Tahun Baru Imlek 2576 Kongzili. Perayaan bagi karyawan yang merayakan tahun baru Tiongkok.',
+                'Libur Hari Raya Nyepi Tahun Baru Saka 1947. Hari libur nasional seluruh karyawan.',
+                'Libur Wafat Yesus Kristus (Good Friday). Hari libur nasional umat Kristiani di Indonesia.',
+                'Libur Hari Buruh Internasional. Menghargai perjuangan dan dedikasi seluruh pekerja Indonesia.',
+                'Libur Hari Raya Waisak 2569 BE. Hari suci umat Buddha memperingati lahir, pencerahan, dan wafatnya Sang Buddha.',
+                'Libur Kenaikan Yesus Kristus ke surga. Hari libur nasional umat Kristiani Indonesia.',
+                'Libur Hari Lahir Pancasila 1 Juni. Peringatan kelahiran dasar negara Republik Indonesia.',
+                'Libur Hari Raya Idul Adha 1446 H. Hari raya kurban umat Islam di seluruh Indonesia.',
+                'Libur Tahun Baru Islam 1447 Hijriyah. Karyawan Muslim PT Bojeri mendapat hari libur nasional.',
+                'Libur Hari Kemerdekaan RI ke-80 tanggal 17 Agustus. Upacara bendera dan kegiatan perayaan kemerdekaan.',
+                'Libur Maulid Nabi Muhammad SAW 1447 H. Peringatan hari kelahiran Nabi Muhammad SAW.',
+                'Libur Hari Pahlawan 10 November. Mengenang jasa para pahlawan kemerdekaan Indonesia.',
+                'Libur Hari Raya Natal 25 Desember. Merayakan kelahiran Yesus Kristus bagi umat Kristiani.',
+                'Cuti bersama menjelang dan sesudah perayaan Hari Raya Natal.',
+                'Libur Tahun Baru Masehi 2026. Seluruh karyawan PT Bojeri mendapat hari libur nasional.',
+                'Libur Hari Raya Idul Fitri 1 Syawal 1447 H. Lebaran dan silaturahmi keluarga bagi seluruh karyawan.',
+                'Cuti bersama Idul Fitri 1447 H. Karyawan mendapat libur panjang Lebaran sesuai ketetapan pemerintah.',
+                'Peringatan Hari Jadi PT Bojeri. Seluruh karyawan mendapat hari libur khusus dari perusahaan.',
             ];
 
             // Create boolean arrays for realistic distribution
@@ -98,7 +76,7 @@ class DemoHolidaySeeder extends Seeder
             shuffle($isOutlookSyncArray);
 
             $holidays = [];
-            for ($i = 0; $i < 30; $i++) {
+            for ($i = 0; $i < 20; $i++) {
                 $startDaysAgo = 175 - ($i * 5);
                 $createdDaysAgo = $startDaysAgo - 1;
                 

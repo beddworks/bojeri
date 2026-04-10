@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         (new EmailTemplatesSeeder())->run();
         (new NotificationsTableSeeder())->run();
 
-        $userId = User::where('email', 'company@example.com')->first()->id;
+        $userId = User::where('email', 'demo@bojeri.com')->first()->id;
         User::CompanySetting($userId);
 
         if(config('app.run_demo_seeder'))
@@ -47,6 +47,10 @@ class DatabaseSeeder extends Seeder
 
             // in this seeder product
             (new DemoTransferSeeder())->run($userId);
+
+            (new DemoSalesProposalSeeder())->run($userId);
+            (new DemoSalesInvoiceSeeder())->run($userId);
+            (new DemoPurchaseInvoiceSeeder())->run($userId);
         }
     }
 }

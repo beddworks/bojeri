@@ -170,7 +170,7 @@ class InstallerController extends Controller
                 'password' => '1234'
             ],
             'company' => [
-                'email' => 'company@example.com',
+                'email' => 'demo@bojeri.com',
                 'password' => '1234'
             ]
         ];

@@ -13,41 +13,31 @@ class DemoDepartmentSeeder extends Seeder
         if (Department::where('created_by', $userId)->exists()) {
             return; // Skip seeding if data already exists
         }
-        $branches = Branch::where('created_by', $userId)->pluck('id')->toArray();
-        
-        if (empty($branches)) {
+        $branches = Branch::where('created_by', $userId)->get()->keyBy('branch_name');
+
+        if ($branches->isEmpty()) {
             return;
         }
 
-        $departments = [
-            'Human Resources',
-            'Information Technology',
-            'Finance & Accounting',
-            'Sales & Marketing',
-            'Operations',
-            'Customer Service',
-            'Research & Development',
-            'Quality Assurance',
-            'Legal & Compliance',
-            'Administration',
-            'Production',
-            'Procurement'
+        // PT Bojeri department mapping per branch
+        $branchDepartments = [
+            'Head Office'   => ['Sales', 'Design', 'Production', 'Warehouse', 'Finance & HR', 'CRM'],
+            'North Branch'  => ['Sales', 'Production', 'Warehouse'],
+            'South Branch'  => ['Sales', 'Production', 'Warehouse'],
         ];
 
-        // Ensure each branch gets at least 3 departments
-        foreach ($branches as $branchId) {
-            for ($i = 0; $i < 3; $i++) {
-                $departmentName = $departments[($branchId * 3 + $i) % count($departments)];
-                
+        foreach ($branchDepartments as $branchName => $departments) {
+            $branch = $branches->get($branchName);
+            if (!$branch) continue;
+
+            foreach ($departments as $departmentName) {
                 Department::updateOrCreate(
                     [
                         'department_name' => $departmentName,
-                        'branch_id' => $branchId,
-                        'created_by' => $userId
+                        'branch_id'       => $branch->id,
+                        'created_by'      => $userId,
                     ],
-                    [
-                        'creator_id' => $userId
-                    ]
+                    ['creator_id' => $userId]
                 );
             }
         }

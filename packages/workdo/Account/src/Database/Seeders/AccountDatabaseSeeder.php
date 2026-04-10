@@ -25,7 +25,7 @@ class AccountDatabaseSeeder extends Seeder
 
         if(config('app.run_demo_seeder'))
         {
-            $user = User::where('email', 'company@example.com')->first();
+            $user = User::where('email', 'demo@bojeri.com')->first();
             if($user)
             {
                 $userId = $user->id;
@@ -52,6 +52,15 @@ class AccountDatabaseSeeder extends Seeder
                 }
                 if(Expense::where('created_by', $userId)->doesntExist()) {
                     (new DemoExpenseSeeder())->run($userId);
+                }
+                if(\Workdo\Account\Models\VendorPayment::where('created_by', $userId)->doesntExist()) {
+                    (new DemoVendorPaymentSeeder())->run($userId);
+                }
+                if(\Workdo\Account\Models\CustomerPayment::where('created_by', $userId)->doesntExist()) {
+                    (new DemoCustomerPaymentSeeder())->run($userId);
+                }
+                if(\Workdo\Account\Models\BankTransfer::where('created_by', $userId)->doesntExist()) {
+                    (new DemoAccountBankTransferSeeder())->run($userId);
                 }
             }
         }

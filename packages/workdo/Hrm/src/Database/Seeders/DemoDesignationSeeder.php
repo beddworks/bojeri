@@ -14,42 +14,69 @@ class DemoDesignationSeeder extends Seeder
         if (Designation::where('created_by', $userId)->exists()) {
             return; // Skip seeding if data already exists
         }
-        $branches = Branch::where('created_by', $userId)->get();
-        
+
+        $branches = Branch::where('created_by', $userId)->get()->keyBy('branch_name');
+
         if ($branches->isEmpty()) {
             return;
         }
 
+        // Helper: get department id by name + branch
+        $getDept = function (string $deptName, int $branchId) use ($userId): ?int {
+            return Department::where('created_by', $userId)
+                ->where('branch_id', $branchId)
+                ->where('department_name', $deptName)
+                ->value('id');
+        };
+
+        // PT Bojeri designations — [designation_name, department, branch_key]
+        // branch_key: 'HQ', 'NBD', 'SBY', 'ALL_BRANCHES', 'BRANCHES_ONLY'
         $designations = [
-            'Director', 'Manager', 'Assistant Manager', 'Team Lead', 'Senior Executive',
-            'Executive', 'Senior Analyst', 'Analyst', 'Specialist', 'Coordinator',
-            'Supervisor', 'Officer', 'Associate', 'Senior Associate', 'Junior Executive',
-            'Senior Consultant', 'Consultant', 'Administrator', 'Senior Administrator', 'Assistant'
+            // ── Head Office ──
+            ['name' => 'Chief Executive Officer', 'dept' => 'Finance & HR', 'branches' => ['Head Office']],
+            ['name' => 'Sales Manager',           'dept' => 'Sales',        'branches' => ['Head Office']],
+            ['name' => 'Sales Executive',         'dept' => 'Sales',        'branches' => ['Head Office', 'North Branch', 'South Branch']],
+            ['name' => 'Sales Representative',    'dept' => 'Sales',        'branches' => ['Head Office']],
+            ['name' => 'POS Cashier',             'dept' => 'Sales',        'branches' => ['Head Office', 'North Branch', 'South Branch']],
+            ['name' => 'Design Manager',          'dept' => 'Design',       'branches' => ['Head Office']],
+            ['name' => 'Senior Designer',         'dept' => 'Design',       'branches' => ['Head Office']],
+            ['name' => 'Junior Designer',         'dept' => 'Design',       'branches' => ['Head Office']],
+            ['name' => '3D Render Artist',        'dept' => 'Design',       'branches' => ['Head Office']],
+            ['name' => 'Production Manager',      'dept' => 'Production',   'branches' => ['Head Office']],
+            ['name' => 'Production Supervisor',   'dept' => 'Production',   'branches' => ['Head Office']],
+            ['name' => 'Floor Supervisor',        'dept' => 'Production',   'branches' => ['North Branch', 'South Branch']],
+            ['name' => 'Craftsman',               'dept' => 'Production',   'branches' => ['Head Office', 'North Branch', 'South Branch']],
+            ['name' => 'Warehouse Manager',       'dept' => 'Warehouse',    'branches' => ['Head Office']],
+            ['name' => 'Inventory Controller',    'dept' => 'Warehouse',    'branches' => ['Head Office']],
+            ['name' => 'Store Keeper',            'dept' => 'Warehouse',    'branches' => ['North Branch', 'South Branch']],
+            ['name' => 'Logistics Staff',         'dept' => 'Warehouse',    'branches' => ['Head Office', 'North Branch', 'South Branch']],
+            ['name' => 'Finance Manager',         'dept' => 'Finance & HR', 'branches' => ['Head Office']],
+            ['name' => 'HR Manager',              'dept' => 'Finance & HR', 'branches' => ['Head Office']],
+            ['name' => 'Accountant',              'dept' => 'Finance & HR', 'branches' => ['Head Office']],
+            ['name' => 'Payroll Staff',           'dept' => 'Finance & HR', 'branches' => ['Head Office']],
+            ['name' => 'Branch Sales Head',       'dept' => 'Sales',        'branches' => ['North Branch', 'South Branch']],
+            ['name' => 'Branch Manager',          'dept' => 'Sales',        'branches' => ['North Branch', 'South Branch']],
+            ['name' => 'CRM Manager',             'dept' => 'CRM',          'branches' => ['Head Office']],
+            ['name' => 'Lead Specialist',         'dept' => 'CRM',          'branches' => ['Head Office']],
         ];
 
-        foreach ($branches as $branch) {
-            $departments = Department::where('created_by', $userId)
-                ->where('branch_id', $branch->id)
-                ->get();
-            
-            foreach ($departments as $department) {
-                $designationCount = rand(4, 5);
-                
-                for ($i = 0; $i < $designationCount; $i++) {
-                    $designationName = $designations[($department->id * 5 + $i) % count($designations)];
-                    
-                    Designation::updateOrCreate(
-                        [
-                            'designation_name' => $designationName,
-                            'branch_id' => $branch->id,
-                            'department_id' => $department->id,
-                            'created_by' => $userId
-                        ],
-                        [
-                            'creator_id' => $userId
-                        ]
-                    );
-                }
+        foreach ($designations as $row) {
+            foreach ($row['branches'] as $branchName) {
+                $branch = $branches->get($branchName);
+                if (!$branch) continue;
+
+                $deptId = $getDept($row['dept'], $branch->id);
+                if (!$deptId) continue;
+
+                Designation::updateOrCreate(
+                    [
+                        'designation_name' => $row['name'],
+                        'branch_id'        => $branch->id,
+                        'department_id'    => $deptId,
+                        'created_by'       => $userId,
+                    ],
+                    ['creator_id' => $userId]
+                );
             }
         }
     }

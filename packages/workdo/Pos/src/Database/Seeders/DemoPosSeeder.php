@@ -17,6 +17,9 @@ class DemoPosSeeder extends Seeder
 {
     public function run($userId): void
     {
+        if (Pos::where('created_by', $userId)->exists()) {
+            return;
+        }
         if (!empty($userId)) {
             // Get required data with proper validation
             $customers = User::whereHas('roles', function($q) { 
@@ -46,57 +49,23 @@ class DemoPosSeeder extends Seeder
                 return;
             }
 
-            // 30 realistic POS sales records with proper business scenarios
+            // PT Bojeri — 12 retail POS transactions (Section 19 of bojeri_seeder.md)
             $posRecords = [
-                // Week 1 - Electronics & Tech Sales
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(180), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 50], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(175), 'items' => [2, 3], 'qty' => [1, 3], 'discount' => [5, 25], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(170), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [10, 40], 'status' => 'completed'],
-                
-                // Week 2 - Fashion & Apparel
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(165), 'items' => [2, 4], 'qty' => [1, 3], 'discount' => [0, 20], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(160), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 15], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(155), 'items' => [3, 5], 'qty' => [1, 4], 'discount' => [5, 30], 'status' => 'completed'],
-                
-                // Week 3 - Grocery & Food Items
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(150), 'items' => [4, 6], 'qty' => [2, 5], 'discount' => [0, 10], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(145), 'items' => [3, 4], 'qty' => [1, 3], 'discount' => [0, 12], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(140), 'items' => [2, 3], 'qty' => [2, 4], 'discount' => [0, 8], 'status' => 'completed'],
-                
-                // Week 4 - Home & Garden
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(135), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [0, 25], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(130), 'items' => [2, 4], 'qty' => [1, 3], 'discount' => [5, 20], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(125), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 15], 'status' => 'completed'],
-                
-                // Week 5 - Sports & Fitness
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(120), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 18], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(115), 'items' => [2, 3], 'qty' => [1, 3], 'discount' => [5, 22], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(110), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [0, 12], 'status' => 'completed'],
-                
-                // Week 6 - Health & Beauty
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(105), 'items' => [2, 4], 'qty' => [1, 3], 'discount' => [0, 28], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(100), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 15], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(95), 'items' => [3, 5], 'qty' => [1, 4], 'discount' => [10, 35], 'status' => 'completed'],
-                
-                // Week 7 - Books & Stationery
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(90), 'items' => [2, 5], 'qty' => [1, 3], 'discount' => [0, 10], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(85), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [0, 12], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(80), 'items' => [2, 4], 'qty' => [1, 3], 'discount' => [0, 8], 'status' => 'completed'],
-                
-                // Week 8 - Automotive & Tools
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(75), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [5, 35], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(70), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 20], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(65), 'items' => [2, 3], 'qty' => [1, 3], 'discount' => [10, 25], 'status' => 'completed'],
-                
-                // Week 9 - Jewelry & Accessories
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(60), 'items' => [1, 2], 'qty' => [1, 1], 'discount' => [0, 100], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(55), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0, 50], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(50), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [5, 75], 'status' => 'completed'],
-                
-                // Recent Sales - Mixed Categories
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(7), 'items' => [2, 4], 'qty' => [1, 3], 'discount' => [0, 15], 'status' => 'completed'],
-                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(3), 'items' => [1, 3], 'qty' => [1, 2], 'discount' => [5, 25], 'status' => 'completed'],
-                ['customer_type' => 'walk_in', 'date' => Carbon::now()->subDays(1), 'items' => [2, 3], 'qty' => [1, 3], 'discount' => [0, 12], 'status' => 'completed']
+                // Penjualan langsung showroom (Bulan Januari)
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(90), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  5], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(85), 'items' => [1, 3], 'qty' => [1, 3], 'discount' => [5, 10], 'status' => 'completed'],
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(80), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  5], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(75), 'items' => [2, 4], 'qty' => [1, 5], 'discount' => [5, 15], 'status' => 'completed'],
+                // Penjualan showroom (Bulan Februari)
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(60), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  8], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(55), 'items' => [1, 3], 'qty' => [1, 4], 'discount' => [5, 12], 'status' => 'completed'],
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(50), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  5], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(45), 'items' => [2, 3], 'qty' => [1, 3], 'discount' => [5, 10], 'status' => 'completed'],
+                // Penjualan showroom (Maret — terakhir)
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(30), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  5], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(20), 'items' => [1, 3], 'qty' => [1, 3], 'discount' => [5, 10], 'status' => 'completed'],
+                ['customer_type' => 'walk_in',   'date' => Carbon::now()->subDays(10), 'items' => [1, 2], 'qty' => [1, 2], 'discount' => [0,  5], 'status' => 'completed'],
+                ['customer_type' => 'registered', 'date' => Carbon::now()->subDays(3),  'items' => [2, 4], 'qty' => [1, 5], 'discount' => [5, 15], 'status' => 'completed'],
             ];
 
             foreach ($posRecords as $index => $record) {

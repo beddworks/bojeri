@@ -10,50 +10,34 @@ class DemoExpenseCategoriesSeeder extends Seeder
 {
     public function run($userId): void
     {
+        if (ExpenseCategories::where('created_by', $userId)->exists()) {
+            return;
+        }
+
+        // PT Bojeri — expense categories mapped to Bojeri CoA
         $expenseCategories = [
-            [
-                'category_name' => 'Office Supplies',
-                'category_code' => 'EXP-001',
-                'description' => 'Expenses for office supplies and stationery',
-                'is_active' => true,
-            ],
-            [
-                'category_name' => 'Utilities',
-                'category_code' => 'EXP-002',
-                'description' => 'Expenses for electricity, water, and internet',
-                'is_active' => true,
-            ],
-            [
-                'category_name' => 'Rent',
-                'category_code' => 'EXP-003',
-                'description' => 'Office and property rent expenses',
-                'is_active' => true,
-            ],
-            [
-                'category_name' => 'Marketing',
-                'category_code' => 'EXP-004',
-                'description' => 'Marketing and advertising expenses',
-                'is_active' => true,
-            ],
-            [
-                'category_name' => 'Travel',
-                'category_code' => 'EXP-005',
-                'description' => 'Business travel and transportation expenses',
-                'is_active' => true,
-            ],
+            ['category_name' => 'Biaya Sewa Gudang',           'category_code' => 'EXP-001', 'description' => 'Biaya sewa gudang produksi dan gudang regional',              'gl_code' => '5-2002'],
+            ['category_name' => 'Biaya Listrik & Air',         'category_code' => 'EXP-002', 'description' => 'Tagihan utilitas listrik dan air seluruh lokasi',             'gl_code' => '5-2003'],
+            ['category_name' => 'Biaya Transport & Pengiriman','category_code' => 'EXP-003', 'description' => 'Ongkos kirim furnitur ke pelanggan dan antar lokasi',         'gl_code' => '5-2004'],
+            ['category_name' => 'Biaya Pemasaran',             'category_code' => 'EXP-004', 'description' => 'Iklan, pameran furniture, dan materi promosi',                 'gl_code' => '5-2005'],
+            ['category_name' => 'Biaya BPJS',                  'category_code' => 'EXP-005', 'description' => 'Iuran BPJS Ketenagakerjaan dan BPJS Kesehatan perusahaan',     'gl_code' => '5-3001'],
         ];
 
-        $expenseGLAccounts = ChartOfAccount::where('created_by', $userId)
-            ->whereBetween('account_code', ['5000', '5999'])
-            ->pluck('id')
-            ->toArray();
+        foreach ($expenseCategories as $category) {
+            $glId = ChartOfAccount::where('created_by', $userId)
+                ->where('account_code', $category['gl_code'])
+                ->value('id');
 
-        foreach ($expenseCategories as $index => $category) {
-            ExpenseCategories::create(array_merge($category, [
-                'gl_account_id' => $expenseGLAccounts[$index % count($expenseGLAccounts)] ?? null,
-                'creator_id' => $userId,
-                'created_by' => $userId,
-            ]));
+            ExpenseCategories::updateOrCreate(
+                ['category_code' => $category['category_code'], 'created_by' => $userId],
+                [
+                    'category_name' => $category['category_name'],
+                    'description'   => $category['description'],
+                    'is_active'     => true,
+                    'gl_account_id' => $glId,
+                    'creator_id'    => $userId,
+                ]
+            );
         }
     }
 }

@@ -14,22 +14,13 @@ class DemoSourceSeeder extends Seeder
         }
         if (!empty($userId)) 
         {
+            // PT Bojeri — CRM lead sources (Section 16)
             $sources = [
-                'Website Contact Form',
-                'Social Media Marketing',
-                'Email Marketing',
-                'Referral Program',
-                'Cold Calling',
-                'Google Ads Campaign',
-                'Trade Show Events',
-                'LinkedIn Outreach',
-                'Content Marketing',
-                'Partner Referral',
-                'Direct Mail Campaign',
-                'Webinar Registration',
-                'SEO Organic Search',
-                'Industry Publication',
-                'Networking Events',
+                'Website',
+                'Referral',
+                'Exhibition',
+                'Instagram',
+                'Cold Call',
             ];
             
             foreach ($sources as $name) {

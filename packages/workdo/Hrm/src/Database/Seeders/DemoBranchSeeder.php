@@ -13,28 +13,17 @@ class DemoBranchSeeder extends Seeder
         if (Branch::where('created_by', $userId)->exists()) {
             return; // Skip seeding if data already exists
         }
+        // PT Bojeri — 3 branches
         $branches = [
-            'Main Office',
-            'Downtown Branch',
-            'North Branch',
-            'South Branch',
-            'East Branch',
-            'West Branch',
-            'Corporate Headquarters',
-            'Regional Office',
-            'Sales Office',
-            'Customer Service Center'
+            ['branch_name' => 'Head Office',    'created_by' => $userId, 'creator_id' => $userId],
+            ['branch_name' => 'North Branch',   'created_by' => $userId, 'creator_id' => $userId],
+            ['branch_name' => 'South Branch',   'created_by' => $userId, 'creator_id' => $userId],
         ];
 
-        foreach ($branches as $branchName) {
+        foreach ($branches as $branch) {
             Branch::updateOrCreate(
-                [
-                    'branch_name' => $branchName,
-                    'created_by' => $userId
-                ],
-                [
-                    'creator_id' => $userId
-                ]
+                ['branch_name' => $branch['branch_name'], 'created_by' => $userId],
+                ['creator_id' => $userId]
             );
         }
     }

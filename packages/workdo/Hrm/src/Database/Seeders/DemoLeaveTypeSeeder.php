@@ -15,63 +15,50 @@ class DemoLeaveTypeSeeder extends Seeder
             return; // Skip seeding if data already exists
         }
         
+        // PT Bojeri — 6 official leave types
         $leaveTypes = [
             [
-                'name' => 'Annual Leave',
-                'description' => 'Yearly vacation leave for employees to rest and recharge.',
-                'max_days_per_year' => 21,
-                'is_paid' => true,
-                'color' => '#10B981'
+                'name'             => 'Annual Leave',
+                'description'      => 'Cuti tahunan karyawan — 12 hari kerja per tahun.',
+                'max_days_per_year' => 12,
+                'is_paid'          => true,
+                'color'            => '#10B981',
             ],
             [
-                'name' => 'Sick Leave',
-                'description' => 'Medical leave for illness or health-related issues.',
-                'max_days_per_year' => 10,
-                'is_paid' => true,
-                'color' => '#EF4444'
+                'name'             => 'Sick Leave',
+                'description'      => 'Cuti sakit dengan surat keterangan dokter.',
+                'max_days_per_year' => 14,
+                'is_paid'          => true,
+                'color'            => '#EF4444',
             ],
             [
-                'name' => 'Maternity Leave',
-                'description' => 'Leave for new mothers after childbirth.',
+                'name'             => 'Maternity Leave',
+                'description'      => 'Cuti melahirkan sesuai UU Ketenagakerjaan.',
                 'max_days_per_year' => 90,
-                'is_paid' => true,
-                'color' => '#F59E0B'
+                'is_paid'          => true,
+                'color'            => '#F59E0B',
             ],
             [
-                'name' => 'Paternity Leave',
-                'description' => 'Leave for new fathers after childbirth.',
-                'max_days_per_year' => 15,
-                'is_paid' => true,
-                'color' => '#3B82F6'
-            ],
-            [
-                'name' => 'Personal Leave',
-                'description' => 'Unpaid leave for personal matters and emergencies.',
-                'max_days_per_year' => 5,
-                'is_paid' => false,
-                'color' => '#8B5CF6'
-            ],
-            [
-                'name' => 'Bereavement Leave',
-                'description' => 'Leave for mourning the loss of a family member.',
-                'max_days_per_year' => 7,
-                'is_paid' => true,
-                'color' => '#6B7280'
-            ],
-            [
-                'name' => 'Study Leave',
-                'description' => 'Leave for educational purposes and professional development.',
-                'max_days_per_year' => 30,
-                'is_paid' => false,
-                'color' => '#06B6D4'
-            ],
-            [
-                'name' => 'Emergency Leave',
-                'description' => 'Immediate leave for urgent family or personal emergencies.',
+                'name'             => 'Paternity Leave',
+                'description'      => 'Cuti ayah mendampingi istri melahirkan.',
                 'max_days_per_year' => 3,
-                'is_paid' => true,
-                'color' => '#DC2626'
-            ]
+                'is_paid'          => true,
+                'color'            => '#3B82F6',
+            ],
+            [
+                'name'             => 'Emergency Leave',
+                'description'      => 'Cuti darurat untuk keperluan mendesak keluarga.',
+                'max_days_per_year' => 3,
+                'is_paid'          => true,
+                'color'            => '#DC2626',
+            ],
+            [
+                'name'             => 'Unpaid Leave',
+                'description'      => 'Cuti tanpa upah atas persetujuan manajemen.',
+                'max_days_per_year' => 30,
+                'is_paid'          => false,
+                'color'            => '#6B7280',
+            ],
         ];
 
         foreach ($leaveTypes as $leaveType) {

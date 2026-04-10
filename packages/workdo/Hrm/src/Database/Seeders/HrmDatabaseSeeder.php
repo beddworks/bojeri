@@ -18,7 +18,7 @@ class HrmDatabaseSeeder extends Seeder
 
         if (config('app.run_demo_seeder')) {
             // Add here your demo data seeders
-            $userId = User::where('email', 'company@example.com')->first()->id;
+            $userId = User::where('email', 'demo@bojeri.com')->first()->id;
 
             HrmUtility::defaultdata($userId);
 

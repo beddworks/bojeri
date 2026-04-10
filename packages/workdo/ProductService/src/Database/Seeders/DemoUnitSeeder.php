@@ -10,84 +10,24 @@ class DemoUnitSeeder extends Seeder
     public function run($userId): void
     {
         if (!empty($userId)) {
+            // PT Bojeri — units for furniture products & services
             $units = [
-                // Electronics & Technology
-                'Piece',
-                'Set',
-                'Unit',
-                'Pack',
-                
-                // Fashion & Apparel
-                'Pair',
-                'Dozen',
-                'Size',
-                'Bundle',
-                
-                // Books & Stationery
-                'Book',
-                'Ream',
-                'Sheet',
-                'Notebook',
-                
-                // Home & Garden
-                'Pot',
-                'Bag',
-                'Packet',
-                'Meter',
-                'Centimeter',
-                'Millimeter',
-                'Inch',
-                'Foot',
-                
-                // Sports & Fitness
-                'Equipment',
-                'Ball',
-                'Kit',
-                
-                // Health & Beauty
-                'Bottle',
-                'Tube',
-                'Jar',
-                'Milliliter',
-                
-                // Fruits & Vegetables
-                'Kilogram',
-                'Gram',
-                'Basket',
-                'Crate',
-                'Ton',
-                
-                // Food & Beverages
-                'Liter',
-                'Can',
-                'Box',
-                'Carton',
-                'Gallon',
-                
-                // Toys & Games
-                'Toy',
-                'Game',
-                'Puzzle',
-                
-                // Jewelry & Accessories
-                'Carat',
-                'Ounce',
-                
-                // Service Units (Income/Expense)
-                'Hour',
-                'Day',
-                'Month',
-                'Year',
-                'Session',
-                'Service Call',
+                'Unit',     // individual furniture piece
+                'Set',      // furniture sets (dining set, kitchen set)
+                'Proyek',   // project-based custom orders
+                'Trip',     // delivery trip
+                'Meter',    // fabric / material by length
+                'Lembar',   // panel / plywood sheets
+                'Batang',   // metal rod / wood rod
+                'Jam',      // hourly service
+                'Hari',     // daily service
             ];
-            
+
             foreach ($units as $unit) {
-                ProductServiceUnit::create([
-                    'unit_name' => $unit,
-                    'creator_id' => $userId,
-                    'created_by' => $userId,
-                ]);
+                ProductServiceUnit::updateOrCreate(
+                    ['unit_name' => $unit, 'created_by' => $userId],
+                    ['creator_id' => $userId]
+                );
             }
         }
     }

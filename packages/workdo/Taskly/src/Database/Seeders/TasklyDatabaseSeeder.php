@@ -19,7 +19,7 @@ class TasklyDatabaseSeeder extends Seeder
 
         if(config('app.run_demo_seeder'))
         {
-            $userId = User::where('email', 'company@example.com')->first()->id;
+            $userId = User::where('email', 'demo@bojeri.com')->first()->id;
 
             TaskStage::defaultdata($userId);
             BugStage::defaultdata($userId);
